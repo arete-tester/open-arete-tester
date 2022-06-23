@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C# Express 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AreteTester", "AreteTester\AreteTester.csproj", "{CD490D51-98BE-485C-9B7E-9FF04244F825}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AreteTester.UI", "AreteTester.UI\AreteTester.UI.csproj", "{EEA92841-01E9-4031-B883-4ED8425E80B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AreteTester.Actions", "AreteTester.Actions\AreteTester.Actions.csproj", "{AE2DBBDA-4078-4EBC-AB42-68B074B00779}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD490D51-98BE-485C-9B7E-9FF04244F825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD490D51-98BE-485C-9B7E-9FF04244F825}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD490D51-98BE-485C-9B7E-9FF04244F825}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD490D51-98BE-485C-9B7E-9FF04244F825}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEA92841-01E9-4031-B883-4ED8425E80B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEA92841-01E9-4031-B883-4ED8425E80B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEA92841-01E9-4031-B883-4ED8425E80B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEA92841-01E9-4031-B883-4ED8425E80B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE2DBBDA-4078-4EBC-AB42-68B074B00779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE2DBBDA-4078-4EBC-AB42-68B074B00779}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE2DBBDA-4078-4EBC-AB42-68B074B00779}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE2DBBDA-4078-4EBC-AB42-68B074B00779}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

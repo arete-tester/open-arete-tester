@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Actions>
+  <ActionCategory name="Variable">
+    <Action name="Set Variable" type="AreteTester.Actions.SetVariable" description="" help_url=""/>
+    <Action name="Remove Variable" type="AreteTester.Actions.RemoveVariable" description="" help_url=""/>
+    <Action name="Run Variables Expression" type="AreteTester.Actions.RunVariablesExpression" description="" help_url=""/>
+    <Action name="Run Comparison Expression" type="AreteTester.Actions.RunComparisonExpression" description="" help_url=""/>
+    <Action name="Convert Variable" type="AreteTester.Actions.ConvertVariable" description="" help_url=""/>
+  </ActionCategory>
+  <ActionCategory name="Text">
+    <Action name="Get Text Length In Text" type="AreteTester.Actions.GetTextLength" description="" help_url=""/>
+    <Action name="Text to Lines" type="AreteTester.Actions.TextToLines" description="" help_url=""/>
+    <Action name="Insert In Text" type="AreteTester.Actions.InsertInText" description="" help_url=""/>
+    <Action name="Replace In Text" type="AreteTester.Actions.ReplaceInText" description="" help_url=""/>
+    <Action name="Text Contains" type="AreteTester.Actions.TextContains" description="" help_url=""/>
+    <Action name="Text Ends With" type="AreteTester.Actions.TextEndsWith" description="" help_url=""/>
+    <Action name="Text Starts With" type="AreteTester.Actions.TextStartsWith" description="" help_url=""/>
+    <Action name="Text Index Of" type="AreteTester.Actions.TextIndexOf" description="" help_url=""/>
+    <Action name="Text Pad Left" type="AreteTester.Actions.TextPadLeft" description="" help_url=""/>
+    <Action name="Text Pad Right" type="AreteTester.Actions.TextPadRight" description="" help_url=""/>
+    <Action name="Trim Substring" type="AreteTester.Actions.TextSubstring" description="" help_url=""/>
+    <Action name="Trim Text" type="AreteTester.Actions.TrimText" description="" help_url=""/>
+    <Action name="Text Trim End" type="AreteTester.Actions.TextTrimEnd" description="" help_url=""/>
+    <Action name="Text Trim Start" type="AreteTester.Actions.TextTrimStart" description="" help_url=""/>
+    <Action name="Text To Upper" type="AreteTester.Actions.TextToUpper" description="" help_url=""/>
+    <Action name="Text To Lower" type="AreteTester.Actions.TextToLower" description="" help_url=""/>
+    <Action name="Get Regex Match in Text" type="AreteTester.Actions.GetRegexMatchInText" description="" help_url=""/>
+    <Action name="Get Regex Matches in Text" type="AreteTester.Actions.GetRegexMatchesInText" description="" help_url=""/>
+  </ActionCategory>
+  <ActionCategory name="Program Control">
+    <Action name="Execute Function" type="AreteTester.Actions.ExecuteFunction" description="Execute a function" help_url="/help.html"/>
+    <Action name="Repeater" type="AreteTester.Actions.Repeater" description="" help_url=""/>
+    <Action name="Wait (seconds)" type="AreteTester.Actions.Wait" description="" help_url=""/>
+  </ActionCategory>
+  <ActionCategory name="Common">
+    <Action name="Log" type="AreteTester.Actions.Log" description="" help_url="/help.html"/>
+    <Action name="Get GUID" type="AreteTester.Actions.GetGUID" description="" help_url=""/>
+    <Action name="Get Random Number" type="AreteTester.Actions.GetRandomNumber" description="" help_url=""/>
+  </ActionCategory>
+  <ActionCategory name="Extensions">
+    <Action name="Execute External Method" type="AreteTester.Actions.ExecuteExternalMethod" description="" help_url=""/>
+  </ActionCategory>
+  <ActionCategory name="TextFile">
+    <Action name="Text Exists in File" type="AreteTester.Actions.TextExistsInFile" description="" help_url=""/>
+    <Action name="Append Text in File" type="AreteTester.Actions.FileAppendText" description="" help_url=""/>
+    <Action name="Read All Text in File" type="AreteTester.Actions.FileReadAllText" description="" help_url=""/>
+  </ActionCategory>
+  <ActionCategory name="Web">
+    <ActionGroup name="Alert">
+      <Action name="Accept Alert" type="AreteTester.Actions.AcceptAlert" description="" help_url=""/>
+      <Action name="Cancel Alert" type="AreteTester.Actions.CancelAlert" description="" help_url=""/>
+      <Action name="Get Alert Text" type="AreteTester.Actions.GetAlertText" description="" help_url=""/>
+      <Action name="Is Alert Displayed" type="AreteTester.Actions.IsAlertDisplayed" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Button">
+      <Action name="Click Button" type="AreteTester.Actions.ClickButton" description="" help_url=""/>
+      <Action name="Get Button Caption" type="AreteTester.Actions.GetButtonCaption" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="CheckBox">
+      <Action name="Get Check Box Caption" type="AreteTester.Actions.GetCheckBoxCaption" description="" help_url=""/>
+      <Action name="Is Check Box Set ?" type="AreteTester.Actions.IsCheckBoxSet" description="" help_url=""/>
+      <Action name="Set Check Box" type="AreteTester.Actions.SetCheckBox" description="" help_url=""/>
+      <Action name="Unset Check Box" type="AreteTester.Actions.UnsetCheckBox" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Cookies">
+      <Action name="Clear All Cookies" type="AreteTester.Actions.ClearAllCookies" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Div">
+      <Action name="Click Div" type="AreteTester.Actions.ClickDiv" description="" help_url=""/>
+      <Action name="Set Inner HTML of Div" type="AreteTester.Actions.SetDivInnerHtml" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Dropdown">
+      <Action name="Get Dropdown Items Count" type="AreteTester.Actions.GetDropdownItemsCount" description="" help_url=""/>
+      <Action name="Is Dropdown Item Exists" type="AreteTester.Actions.IsDropdownItemExists" description="" help_url=""/>
+      <Action name="Is Dropdown Item Selected" type="AreteTester.Actions.IsDropdownItemSelected" description="" help_url=""/>
+      <Action name="Select By Index" type="AreteTester.Actions.SelectDropdownItemByIndex" description="" help_url=""/>
+      <Action name="Select By Text" type="AreteTester.Actions.SelectDropdownItemByText" description="" help_url=""/>
+      <Action name="Select By Value" type="AreteTester.Actions.SelectDropdownItemByValue" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Email">
+      <Action name="Set SMTP Details" type="AreteTester.Actions.SetSmtpDetails" description="" help_url=""/>
+      <Action name="Send Email" type="AreteTester.Actions.SendEmail" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Email Input">
+      <Action name="Clear Email" type="AreteTester.Actions.ClearEmail" description="" help_url=""/>
+      <Action name="Get Email Value" type="AreteTester.Actions.GetEmailValue" description="" help_url=""/>
+      <Action name="Set Email Value" type="AreteTester.Actions.SetEmailValue" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Headers">
+      <Action name="Get H1 Text" type="AreteTester.Actions.GetH1Text" description="" help_url=""/>
+      <Action name="Get H2 Text" type="AreteTester.Actions.GetH2Text" description="" help_url=""/>
+      <Action name="Get H3 Text" type="AreteTester.Actions.GetH3Text" description="" help_url=""/>
+      <Action name="Get H4 Text" type="AreteTester.Actions.GetH4Text" description="" help_url=""/>
+      <Action name="Get H5 Text" type="AreteTester.Actions.GetH5Text" description="" help_url=""/>
+      <Action name="Get H6 Text" type="AreteTester.Actions.GetH6Text" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Hyperlink">
+      <Action name="Click Hyperlink" type="AreteTester.Actions.ClickHyperlink" description="" help_url=""/>
+      <Action name="Get Hyperlink Caption" type="AreteTester.Actions.GetHyperlinkCaption" description="" help_url=""/>
+      <Action name="Get Hyperlink URL" type="AreteTester.Actions.GetHyperlinkUrl" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="iFrame">
+      <Action name="Switch To Frame" type="AreteTester.Actions.SwichToFrame" description="" help_url=""/>
+      <Action name="Switch To Default Content" type="AreteTester.Actions.SwichToDefaultContent" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Listbox">
+      <Action name="Deselect All Listbox Items" type="AreteTester.Actions.DeselectAllListboxItems" description="" help_url=""/>
+      <Action name="Deselect Listbox Item By Index" type="AreteTester.Actions.DeselectListboxItemByIndex" description="" help_url=""/>
+      <Action name="Deselect Listbox Item By Text" type="AreteTester.Actions.DeselectListboxItemByText" description="" help_url=""/>
+      <Action name="Deselect Listbox Item By Value" type="AreteTester.Actions.DeselectListboxItemByValue" description="" help_url=""/>
+      <Action name="Get Listbox Items Count" type="AreteTester.Actions.GetListboxItemsCount" description="" help_url=""/>
+      <Action name="Is Listbox Item Exists" type="AreteTester.Actions.IsListboxItemExists" description="" help_url=""/>
+      <Action name="Is Listbox Item Selected" type="AreteTester.Actions.IsListboxItemSelected" description="" help_url=""/>
+      <Action name="Is Listbox Multiple Selection Allowed" type="AreteTester.Actions.IsListboxMultipleSelectionAllowed" description="" help_url=""/>
+      <Action name="Select All Listbox Items" type="AreteTester.Actions.SelectAllListboxItems" description="" help_url=""/>
+      <Action name="Select Listbox Item By Index" type="AreteTester.Actions.SelectListboxItemByIndex" description="" help_url=""/>
+      <Action name="Select Listbox Item By Text" type="AreteTester.Actions.SelectListboxItemByText" description="" help_url=""/>
+      <Action name="Select Listbox Item By Value" type="AreteTester.Actions.SelectListboxItemByValue" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Paragraph">
+      <Action name="Get Paragraph Text" type="AreteTester.Actions.GetParagraphText" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Password">
+      <Action name="Clear Password" type="AreteTester.Actions.ClearPassword" description="" help_url=""/>
+      <Action name="Get Password Value" type="AreteTester.Actions.GetPasswordValue" description="" help_url=""/>
+      <Action name="Set Password Value" type="AreteTester.Actions.SetPasswordValue" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="RadioButton">
+      <Action name="Is Radio Button Set ?" type="AreteTester.Actions.IsRadioButtonSet" description="" help_url=""/>
+      <Action name="Set Radio Button" type="AreteTester.Actions.SetRadioButton" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Span">
+      <Action name="Get Span Text" type="AreteTester.Actions.GetSpanText" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Screenshot">
+      <Action name="Capture Screenshot" type="AreteTester.Actions.CaptureScreenshot" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Table">
+      <Action name="Get Cell Value" type="AreteTester.Actions.GetCellValue" description="" help_url=""/>
+      <Action name="Get Rows Count" type="AreteTester.Actions.GetRowsCount" description="" help_url=""/>
+      <Action name="Get Columns Count" type="AreteTester.Actions.GetColumnsCount" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="TextArea">
+      <Action name="Clear Text Area" type="AreteTester.Actions.ClearTextArea" description="" help_url=""/>
+      <Action name="Get Text Area Value" type="AreteTester.Actions.GetTextAreaValue" description="" help_url=""/>
+      <Action name="Set Text Area Value" type="AreteTester.Actions.SetTextAreaValue" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="TextBox">
+      <Action name="Clear Text Box" type="AreteTester.Actions.ClearTextBox" description="" help_url=""/>
+      <Action name="Get Text Box Value" type="AreteTester.Actions.GetTextBoxValue" description="" help_url=""/>
+      <Action name="Set Text Box Value" type="AreteTester.Actions.SetTextBoxValue" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="URL">
+      <Action name="Navigate URL" type="AreteTester.Actions.NavigateUrl" description="" help_url=""/>
+      <Action name="Get Current URL" type="AreteTester.Actions.GetCurrentUrl" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Web Driver">
+      <Action name="Quit Web Driver" type="AreteTester.Actions.QuitWebDriver" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Web Element">
+      <Action name="Get Attribute Value" type="AreteTester.Actions.GetAttributeValue" description="" help_url=""/>
+      <Action name="Get Element Inner Text" type="AreteTester.Actions.GetElementInnerText" description="" help_url=""/>
+      <Action name="Is Displayed" type="AreteTester.Actions.IsDisplayed" description="" help_url=""/>
+      <Action name="Mouse Click Element" type="AreteTester.Actions.MouseClickElement" description="" help_url=""/>
+      <Action name="Double Click Element" type="AreteTester.Actions.DoubleClickElement" description="" help_url=""/>
+      <Action name="Trigger Element Event" type="AreteTester.Actions.TriggerElementEvent" description="" help_url=""/>
+      <Action name="Press ENTER Key" type="AreteTester.Actions.PressEnterKey" description="" help_url=""/>
+      <Action name="Press Keys" type="AreteTester.Actions.PressKeys" description="" help_url=""/>
+      <Action name="Refresh Web Page" type="AreteTester.Actions.Refresh" description="" help_url=""/>
+      <Action name="Wait For Element Displayed (seconds)" type="AreteTester.Actions.WaitForElementDisplayed" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Web Page">
+      <Action name="Get Page Source" type="AreteTester.Actions.GetPageSource" description="" help_url=""/>
+      <Action name="Get Page Text" type="AreteTester.Actions.GetPageText" description="" help_url=""/>
+      <Action name="Scroll To Element" type="AreteTester.Actions.ScrollToElement" description="" help_url=""/>
+      <Action name="Scroll By Pixcels" type="AreteTester.Actions.ScrollDownByPixcels" description="" help_url=""/>
+      <Action name="Scroll To Bottom" type="AreteTester.Actions.ScrollToBottom" description="" help_url=""/>
+      <Action name="Scroll To Top" type="AreteTester.Actions.ScrollToTop" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="Window">
+      <Action name="Get Window Position" type="AreteTester.Actions.GetWindowPosition" description="" help_url=""/>
+      <Action name="Get Window Size" type="AreteTester.Actions.GetWindowSize" description="" help_url=""/>
+      <Action name="Get Window Title" type="AreteTester.Actions.GetWindowTitle" description="" help_url=""/>
+      <Action name="Go Back" type="AreteTester.Actions.GoBack" description="" help_url=""/>
+      <Action name="Go Forward" type="AreteTester.Actions.GoForward" description="" help_url=""/>
+      <Action name="Maximize Window" type="AreteTester.Actions.MaximizeWindow" description="" help_url=""/>
+      <Action name="Minimize Window" type="AreteTester.Actions.MinimizeWindow" description="" help_url=""/>
+      <Action name="Resize Window" type="AreteTester.Actions.ResizeWindow" description="" help_url=""/>
+      <Action name="Close Window" type="AreteTester.Actions.CloseWindow" description="" help_url=""/>
+      <Action name="Open New Tab" type="AreteTester.Actions.OpenNewTab" description="" help_url=""/>
+      <Action name="Close Tab" type="AreteTester.Actions.CloseTab" description="" help_url=""/>
+      <Action name="Switch To Tab" type="AreteTester.Actions.SwitchToTab" description="" help_url=""/>
+    </ActionGroup>
+    <ActionGroup name="XPath">
+      <Action name="Discover XPath" type="AreteTester.Actions.DiscoverXPath" description="" help_url=""/>
+    </ActionGroup>
+  </ActionCategory>
+  <ActionGroup name="Assertions">
+    <Action name="Assert Equal" type="AreteTester.Actions.AssertEqual" description="" help_url=""/>
+    <Action name="Assert is False" type="AreteTester.Actions.AssertIsFalse" description="" help_url=""/>
+    <Action name="Assert is True" type="AreteTester.Actions.AssertIsTrue" description="" help_url=""/>
+    <Action name="Assert Regex" type="AreteTester.Actions.AssertRegex" description="" help_url=""/>
+    <Action name="Assert Attribute" type="AreteTester.Actions.AssertAttribute" description="" help_url=""/>
+    <Action name="Assert Inner Text" type="AreteTester.Actions.AssertInnerText" description="" help_url=""/>
+    <Action name="Assert Style" type="AreteTester.Actions.AssertStyle" description="" help_url=""/>
+  </ActionGroup>
+  <ActionCategory name="API">
+    <Action name="GET" type="AreteTester.Actions.AssertEqual" description="" help_url=""/>
+    <Action name="POST" type="AreteTester.Actions.AssertEqual" description="" help_url=""/>
+    <Action name="PUT" type="AreteTester.Actions.AssertEqual" description="" help_url=""/>
+    <Action name="DELETE" type="AreteTester.Actions.AssertEqual" description="" help_url=""/>
+  </ActionCategory>  
+  <ActionCategory name="Data">
+    <Action name="Set Database Configuration" type="AreteTester.Actions.SetDatabaseConfig" description="" help_url=""/>
+    <Action name="SQL Execute Query" type="AreteTester.Actions.SqlExecuteQuery" description="" help_url=""/>
+    <Action name="Select Field Mapping" type="AreteTester.Actions.SelectFieldMapping"  description="" help_url=""/>
+    <Action name="SQL Execute Non Query" type="AreteTester.Actions.SqlExecuteNonQuery"  description="" help_url=""/>
+  </ActionCategory>
+</Actions>

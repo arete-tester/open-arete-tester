@@ -1,0 +1,44 @@
+﻿<?xml version="1.0"?>
+<Wizards>
+  <Wizard id="where_help" category="where_help" color="" text="Where you can find help ?" >
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/where_help_1.png">
+      <ReferenceLink text="Visit Website" width="150" path="http://www.aretetester.com" />
+      <ReferenceLink text="View Documentation" width="150" path="http://www.aretetester.com/aretetester-doc.pdf" />
+    </Content>
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/where_help_2.png" />
+  </Wizard>
+  <Wizard id="how_create_project" category="help_links" color="" text="How to create first project ?" >
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/first_project_1.png" />
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/first_project_2.png" />
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/first_project_3.png" />
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/first_project_4.png" />
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/first_project_5.png" />
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/first_project_6.png" />
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/first_project_7.png" />
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/first_project_8.png" />
+  </Wizard>
+  <Wizard id="how_create_project" category="help_links" color="" text="How to run project and view results ?" >
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/run_project_view_results.png" />
+  </Wizard>
+  <Wizard id="how_create_project" category="help_links" color="" text="How much does aretetester license costs ?" >
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/aretetester_cost.png" />
+  </Wizard>
+  <Wizard id="how_create_project" category="help_links" color="" text="How to purchase license(s) ?" >
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/purchase_license_1.png" />
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/purchase_license_2.png" />
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/purchase_license_3.png" />
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/purchase_license_4.png" />
+  </Wizard>
+  <Wizard id="how_create_project" category="help_links" color="" text="Where I can find documentation ?" >
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/aretetester_documentation.png" />
+  </Wizard>
+  <Wizard id="how_create_project" category="help_links" color="" text="How to use debugger ?" >
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/use_debugger.png" />
+  </Wizard>
+  <Wizard id="how_create_project" category="help_links" color="" text="How to export and import ?" >
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/export_import.png" />
+  </Wizard>
+  <Wizard id="how_create_project" category="help_links" color="" text="How to search inside project ?" >
+    <Content type="Image" path="http://www.aretetester.com/wizard_images/search_project.png" />
+  </Wizard>
+</Wizards>

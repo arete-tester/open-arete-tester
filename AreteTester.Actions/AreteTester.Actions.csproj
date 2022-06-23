@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AE2DBBDA-4078-4EBC-AB42-68B074B00779}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AreteTester.Actions</RootNamespace>
+    <AssemblyName>AreteTester.Actions</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebDriver, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\WebDriver.Support.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Control\Block.cs" />
+    <Compile Include="Control\Continue.cs" />
+    <Compile Include="Enums\DiscoverXPathType.cs" />
+    <Compile Include="Web\Alert\AcceptAlert.cs" />
+    <Compile Include="Web\Alert\IsAlertDisplayed.cs" />
+    <Compile Include="Web\Alert\CancelAlert.cs" />
+    <Compile Include="Web\Alert\GetAlertText.cs" />
+    <Compile Include="Web\CheckBox\GetCheckBoxCaption.cs" />
+    <Compile Include="Web\Cookies\ClearAllCookies.cs" />
+    <Compile Include="Web\Element\DoubleClickElement.cs" />
+    <Compile Include="Web\Element\PressKeys.cs" />
+    <Compile Include="Web\Element\TriggerElementEvent.cs" />
+    <Compile Include="Web\Element\MouseClickElement.cs" />
+    <Compile Include="Web\Element\GetElementInnerText.cs" />
+    <Compile Include="Document\Text\TextExistsInFile.cs" />
+    <Compile Include="Web\Hyperlink\GetHyperlinkUrl.cs" />
+    <Compile Include="Web\Page\GetPageText.cs" />
+    <Compile Include="Web\Page\GetPageSource.cs" />
+    <Compile Include="Web\Page\ScrollToTop.cs" />
+    <Compile Include="Web\Page\ScrollToBottom.cs" />
+    <Compile Include="Web\Page\ScrollDownByPixcels.cs" />
+    <Compile Include="Web\Page\ScrollToElement.cs" />
+    <Compile Include="Web\Email\SendEmail.cs" />
+    <Compile Include="Document\Text\FileReadAllText.cs" />
+    <Compile Include="Web\Element\GetAttributeValue.cs" />
+    <Compile Include="Document\Text\FileAppendText.cs" />
+    <Compile Include="Control\Repeater.cs" />
+    <Compile Include="Text\TextToLower.cs" />
+    <Compile Include="Text\TextToUpper.cs" />
+    <Compile Include="Text\GetRegexMatchesInText.cs" />
+    <Compile Include="Text\GetRegexMatchInText.cs" />
+    <Compile Include="Text\TextToLines.cs" />
+    <Compile Include="Text\InsertInText.cs" />
+    <Compile Include="Text\TextIndexOf.cs" />
+    <Compile Include="Text\TextSubstring.cs" />
+    <Compile Include="Text\TextPadRight.cs" />
+    <Compile Include="Text\TextPadLeft.cs" />
+    <Compile Include="Text\TextEndsWith.cs" />
+    <Compile Include="Text\TextStartsWith.cs" />
+    <Compile Include="Text\GetTextLength.cs" />
+    <Compile Include="Text\TextTrimEnd.cs" />
+    <Compile Include="Text\TextTrimStart.cs" />
+    <Compile Include="Text\TextContains.cs" />
+    <Compile Include="Text\ReplaceInText.cs" />
+    <Compile Include="Text\TrimText.cs" />
+    <Compile Include="Variable\RunComparisonExpression.cs" />
+    <Compile Include="Variable\RunVariablesExpression.cs" />
+    <Compile Include="Web\Element\WaitForElementDisplayed.cs" />
+    <Compile Include="Web\Page\Refresh.cs" />
+    <Compile Include="Common\Log.cs" />
+    <Compile Include="Web\Dropdown\GetDropdownItemsCount.cs" />
+    <Compile Include="Web\Element\IsDisplayed.cs" />
+    <Compile Include="Web\Button\ClickButton.cs" />
+    <Compile Include="Web\Button\GetButtonCaption.cs" />
+    <Compile Include="Web\CheckBox\IsCheckBoxSet.cs" />
+    <Compile Include="Web\CheckBox\SetCheckBox.cs" />
+    <Compile Include="Web\CheckBox\UnsetCheckBox.cs" />
+    <Compile Include="Web\Div\ClickDiv.cs" />
+    <Compile Include="Web\Div\SetDivInnerHtml.cs" />
+    <Compile Include="Extensions\ExecuteExternalMethod.cs" />
+    <Compile Include="Web\Headers\GetH6Text.cs" />
+    <Compile Include="Web\Headers\GetH5Text.cs" />
+    <Compile Include="Web\Headers\GetH4Text.cs" />
+    <Compile Include="Web\Headers\GetH3Text.cs" />
+    <Compile Include="Web\Headers\GetH2Text.cs" />
+    <Compile Include="Web\Headers\GetH1Text.cs" />
+    <Compile Include="Web\iFrame\SwichToDefaultContent.cs" />
+    <Compile Include="Web\iFrame\SwichToFrame.cs" />
+    <Compile Include="Web\Listbox\IsListboxItemExists.cs" />
+    <Compile Include="Web\Listbox\IsListboxItemSelected.cs" />
+    <Compile Include="Web\Listbox\SelectListboxItemByIndex.cs" />
+    <Compile Include="Web\Listbox\SelectListboxItemByText.cs" />
+    <Compile Include="Web\Listbox\SelectListboxItemByValue.cs" />
+    <Compile Include="Web\Paragraph\GetParagraphText.cs" />
+    <Compile Include="Common\GetGUID.cs" />
+    <Compile Include="Common\GetRandomNumber.cs" />
+    <Compile Include="Web\Screenshot\CaptureScreenshot.cs" />
+    <Compile Include="Web\Dropdown\IsDropdownItemSelected.cs" />
+    <Compile Include="Web\Listbox\DeselectListboxItemByValue.cs" />
+    <Compile Include="Web\Listbox\DeselectListboxItemByText.cs" />
+    <Compile Include="Web\Listbox\DeselectListboxItemByIndex.cs" />
+    <Compile Include="Web\Listbox\IsListboxMultipleSelectionAllowed.cs" />
+    <Compile Include="Web\Listbox\DeselectAllListboxItems.cs" />
+    <Compile Include="Web\Listbox\SelectAllListboxItems.cs" />
+    <Compile Include="Web\Dropdown\IsDropdownItemExists.cs" />
+    <Compile Include="Web\Listbox\GetListboxItemsCount.cs" />
+    <Compile Include="Web\Dropdown\SelectDropdownItemByIndex.cs" />
+    <Compile Include="Web\Dropdown\SelectDropdownItemByValue.cs" />
+    <Compile Include="Web\Dropdown\SelectDropdownItemByText.cs" />
+    <Compile Include="Web\Span\GetSpanText.cs" />
+    <Compile Include="Web\Hyperlink\ClickHyperlink.cs" />
+    <Compile Include="Web\EmailControl\GetEmailValue.cs" />
+    <Compile Include="Web\Hyperlink\GetHyperlinkCaption.cs" />
+    <Compile Include="Web\Password\ClearPassword.cs" />
+    <Compile Include="Web\Password\GetPasswordValue.cs" />
+    <Compile Include="Web\Password\SetPasswordValue.cs" />
+    <Compile Include="Web\EmailControl\ClearEmail.cs" />
+    <Compile Include="Web\EmailControl\SetEmailValue.cs" />
+    <Compile Include="Web\URL\GetCurrentUrl.cs" />
+    <Compile Include="Web\URL\NavigateUrl.cs" />
+    <Compile Include="Web\Element\PressEnterKey.cs" />
+    <Compile Include="Web\WebDriver\QuitWebDriver.cs" />
+    <Compile Include="Web\RadioButton\IsRadioButtonSet.cs" />
+    <Compile Include="Web\RadioButton\SetRadioButton.cs" />
+    <Compile Include="Web\Table\GetColumnsCount.cs" />
+    <Compile Include="Web\Table\GetCellValue.cs" />
+    <Compile Include="Web\Table\GetRowsCount.cs" />
+    <Compile Include="Web\Textarea\ClearTextArea.cs" />
+    <Compile Include="Web\Textarea\GetTextAreaValue.cs" />
+    <Compile Include="Web\Textarea\SetTextAreaValue.cs" />
+    <Compile Include="Web\TextBox\ClearTextBox.cs" />
+    <Compile Include="Web\TextBox\GetTextBoxValue.cs" />
+    <Compile Include="Web\TextBox\SetTextBoxValue.cs" />
+    <Compile Include="Variable\ConvertVariable.cs" />
+    <Compile Include="Variable\SetVariable.cs" />
+    <Compile Include="Variable\RemoveVariable.cs" />
+    <Compile Include="Control\Wait.cs" />
+    <Compile Include="Web\Window\CloseWindow.cs" />
+    <Compile Include="Web\Window\CloseTab.cs" />
+    <Compile Include="Web\Window\GoForward.cs" />
+    <Compile Include="Web\Window\GoBack.cs" />
+    <Compile Include="Web\Window\SwitchToTab.cs" />
+    <Compile Include="Web\Window\OpenNewTab.cs" />
+    <Compile Include="Web\Window\GetWindowTitle.cs" />
+    <Compile Include="Web\Window\GetWindowPosition.cs" />
+    <Compile Include="Web\Window\GetWindowSize.cs" />
+    <Compile Include="Web\Window\ResizeWindow.cs" />
+    <Compile Include="Web\Window\MinimizeWindow.cs" />
+    <Compile Include="Web\Window\MaximizeWindow.cs" />
+    <Compile Include="Assert.cs" />
+    <Compile Include="Data\SetDatabaseConfig.cs" />
+    <Compile Include="Data\DatabaseAdapter.cs" />
+    <Compile Include="Data\SqlExecuteNonQuery.cs" />
+    <Compile Include="Data\DatabaseConfig.cs" />
+    <Compile Include="Data\ConfigEditor\DatabaseConfigEditor.cs" />
+    <Compile Include="Data\ConfigEditor\DatabaseConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data\ConfigEditor\DatabaseConfigForm.Designer.cs">
+      <DependentUpon>DatabaseConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\AssertEqualType.cs" />
+    <Compile Include="ActionBase.cs" />
+    <Compile Include="Data\SelectFieldMapping.cs" />
+    <Compile Include="Data\SqlExecuteQuery.cs" />
+    <Compile Include="Enums\RepeaterType.cs" />
+    <Compile Include="Enums\TestFunctionType.cs" />
+    <Compile Include="Enums\WebDriverType.cs" />
+    <Compile Include="Control\ExecuteFunction.cs" />
+    <Compile Include="IfConditionEvaler.cs" />
+    <Compile Include="Globals.cs" />
+    <Compile Include="Module.cs" />
+    <Compile Include="Output.cs" />
+    <Compile Include="Preferences.cs" />
+    <Compile Include="Project.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Enums\RunnerStatusType.cs" />
+    <Compile Include="Web\Email\SetSmtpDetails.cs" />
+    <Compile Include="Web\Email\SmtpSettings.cs" />
+    <Compile Include="TestClass.cs" />
+    <Compile Include="TestFunction.cs" />
+    <Compile Include="ValidationResult.cs" />
+    <Compile Include="Assertions\AssertIsFalse.cs" />
+    <Compile Include="Assertions\AssertIsTrue.cs" />
+    <Compile Include="Assertions\AssertEqual.cs" />
+    <Compile Include="Assertions\AssertRegex.cs" />
+    <Compile Include="Assertions\AssertStyle.cs" />
+    <Compile Include="Assertions\AssertInnerText.cs" />
+    <Compile Include="Assertions\AssertAttribute.cs" />
+    <Compile Include="VariablePropertyConverter.cs" />
+    <Compile Include="Variables.cs" />
+    <Compile Include="Web\XPath\DiscoverXPath.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\ConfigEditor\DatabaseConfigForm.resx">
+      <DependentUpon>DatabaseConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Document\Excel\" />
+    <Folder Include="Document\PDF\" />
+    <Folder Include="Document\PPT\" />
+    <Folder Include="Document\Word\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

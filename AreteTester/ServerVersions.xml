@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<builds>
+  <build value="0">
+    <file name="Actions.xml" bin_path="" server_path="" />
+    <file name="LICENSE" bin_path="" server_path="" />
+    <file name="report_template.html" bin_path="" server_path="" />
+    <file name="WebDriver.dll" bin_path="" server_path="" />
+    <file name="WebDriver.Support.dll" bin_path="" server_path="" />
+    <file name="DocumentFormat.OpenXml.dll" bin_path="" server_path="" />
+    <file name="AreteTester.Actions.dll" bin_path="" server_path="" />
+    <file name="AreteTester.Actions.pdb" bin_path="" server_path="" />
+    <file name="AreteTester.UI.dll" bin_path="" server_path="" />
+    <file name="AreteTester.UI.dll.config" bin_path="" server_path="" />
+    <file name="AreteTester.UI.pdb" bin_path="" server_path="" />
+  </build>
+  <build value="1">
+    <file name="AreteTester.Actions.dll" bin_path="" server_path="" />
+    <file name="AreteTester.Actions.pdb" bin_path="" server_path="" />
+    <file name="AreteTester.UI.dll" bin_path="" server_path="" />
+    <file name="AreteTester.UI.pdb" bin_path="" server_path="" />
+    <file name="Actions.xml" bin_path="" server_path="" />
+  </build>
+</builds>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+      body {font-family: Arial;}
+      .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+      }
+      .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+      }
+      .tab button:hover {
+        background-color: #ddd;
+      }
+      .tab button.active {
+        background-color: #ccc;
+      }
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+      }
+		</style>
+		<style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+
+      #wrapper {
+        text-align: center;
+      }
+      #chartdiv {
+        display: inline-block;
+      }
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">    
+			<div id="chartdiv">
+				<div id="piechart"></div>
+			</div>
+		</div>
+
+		<div class="tab">
+			<button id="project_details_id" class="tablinks" onclick="openCity(event, 'project_details')">Project Details</button>
+			<button id="assertions_id" class="tablinks" onclick="openCity(event, 'assertions')">Assertions</button>
+			<button id="logs_id" class="tablinks" onclick="openCity(event, 'logs')">Logs</button>
+		</div>
+
+		<div id="project_details" class="tabcontent">
+			<table>
+				<tr>
+					<td>Project Name</td>
+					<td>@@@ProjectName</td>
+				</tr>
+				<tr>
+					<td>Execution Start Time</td>
+					<td>@@@ExecutionStartTime</td>
+				</tr>
+				<tr>
+          <td>Execution End Time</td>
+          <td>@@@ExecutionStartTime</td>
+				</tr>
+				<tr>
+          <td>Number of Assertions</td>
+          <td>@@@AssertionsCount</td>
+				</tr>
+        <tr>
+          <td>Success Count</td>
+          <td>@@@SuccessCount</td>
+        </tr>
+        <tr>
+          <td>Failure Count</td>
+          <td>@@@FailureCount</td>
+        </tr>
+        <tr>
+          <td>Number of Logs</td>
+          <td>@@@LogsCount</td>
+        </tr>
+			</table>
+		</div>
+
+		<div id="assertions" class="tabcontent">
+			<table>
+				<tr>
+					<th width="5%">#</th>
+					<th width="55%">Description</th>
+					<th width="10%">Assertion Type</th>
+					<th width="10%">Expected</th>
+					<th width="10%">Actual</th>
+					<th width="10%">Status</th>
+				</tr>
+@@@AssertionRows
+			</table>
+		</div>
+		
+		<div id="logs" class="tabcontent">
+			<table>
+@@@LogRows
+      </table>
+		</div>
+
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript">
+			// Load google charts
+			google.charts.load('current', {'packages':['corechart']});
+			google.charts.setOnLoadCallback(drawChart);
+
+			// Draw the chart and set the chart values
+			function drawChart() {
+				var data = google.visualization.arrayToDataTable([
+					['Assertions', 'Assertions chart'],
+					['Success', @@@SuccessCount],
+					['Failure', @@@FailureCount]
+				]);
+
+				var options = {'title':'Assertions'};
+
+				// Display the chart inside the <div> element with id="piechart"
+				var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+				chart.draw(data, options);
+			}
+		</script>
+		<script>
+			window.onload = function() {
+				openCity(event, 'project_details');
+				document.getElementById("project_details_id").className += " active";
+			};
+			
+			function openCity(evt, cityName) {
+				var i, tabcontent, tablinks;
+				tabcontent = document.getElementsByClassName("tabcontent");
+				for (i = 0; i < tabcontent.length; i++) {
+					tabcontent[i].style.display = "none";
+				}
+				tablinks = document.getElementsByClassName("tablinks");
+				for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].className = tablinks[i].className.replace(" active", "");
+				}
+				document.getElementById(cityName).style.display = "block";
+				evt.currentTarget.className += " active";
+			}
+		</script>
+	</body>
+</html>

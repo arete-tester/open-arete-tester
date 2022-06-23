@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Videos>
+  <Video description="Fundamentals" url="http://www.aretetester.com/videos/fundamentals.html" />  
+  <Video description="Executing Project" url="http://www.aretetester.com/videos/executing-project.html" />
+  <Video description="Calling Function" url="http://www.aretetester.com/videos/call-funcation.html" />
+  <Video description="Understanding Variables" url="http://www.aretetester.com/videos/understanding-variables.html" />
+</Videos>
