@@ -16,6 +16,10 @@ Following are salient features of AreteTester.
 
 Visit https://aretetester.com/help/index.html for help documentation.
 
+**Youtube Videos**
+
+https://www.youtube.com/channel/UCULg1p7_9le27rct-pwTtWw
+
 **Contact**
 
 Write an email to support@aretetester.com to log issues, feature requests, or any other feedbacks / recommendations. You can also log issues directly here in this git repository.
