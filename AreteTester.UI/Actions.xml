@@ -30,6 +30,8 @@
   <ActionCategory name="Program Control">
     <Action name="Execute Function" type="AreteTester.Actions.ExecuteFunction" description="Execute a function" help_url="/help.html"/>
     <Action name="Repeater" type="AreteTester.Actions.Repeater" description="" help_url=""/>
+    <Action name="Break" type="AreteTester.Actions.Break" description="" help_url=""/>
+    <Action name="Continue" type="AreteTester.Actions.Continue" description="" help_url=""/>
     <Action name="Wait (seconds)" type="AreteTester.Actions.Wait" description="" help_url=""/>
   </ActionCategory>
   <ActionCategory name="Common">

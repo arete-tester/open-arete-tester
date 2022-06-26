@@ -57,7 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Control\Block.cs" />
+    <Compile Include="Control\Break.cs" />
     <Compile Include="Control\Continue.cs" />
     <Compile Include="Enums\DiscoverXPathType.cs" />
     <Compile Include="Web\Alert\AcceptAlert.cs" />

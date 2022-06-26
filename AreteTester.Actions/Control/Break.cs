@@ -12,11 +12,11 @@ using System.Text.RegularExpressions;
 namespace AreteTester.Actions
 {
     [Serializable]
-    public class Block : ActionBase
+    public class Break : ActionBase
     {
-        public Block()
+        public Break()
         {
-            this.ActionType = "Block";
+            this.ActionType = "Break";
         }
 
         public override void Process()

@@ -186,13 +186,6 @@ namespace AreteTester.UI.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap logo {
-            get {
-                object obj = ResourceManager.GetObject("logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap logo_text {
             get {
                 object obj = ResourceManager.GetObject("logo_text", resourceCulture);
@@ -210,13 +203,6 @@ namespace AreteTester.UI.Properties {
         internal static System.Drawing.Bitmap module {
             get {
                 object obj = ResourceManager.GetObject("module", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap mycommerce {
-            get {
-                object obj = ResourceManager.GetObject("mycommerce", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -315,13 +301,6 @@ namespace AreteTester.UI.Properties {
         internal static System.Drawing.Bitmap search {
             get {
                 object obj = ResourceManager.GetObject("search", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap stripe {
-            get {
-                object obj = ResourceManager.GetObject("stripe", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

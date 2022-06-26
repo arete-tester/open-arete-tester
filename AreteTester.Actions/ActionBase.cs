@@ -160,6 +160,8 @@ namespace AreteTester.Actions
 
     // Repeater
     [XmlInclude(typeof(Repeater))]
+    [XmlInclude(typeof(Continue))]
+    [XmlInclude(typeof(Break))]
 
     // iFrame
     [XmlInclude(typeof(SwichToFrame))]

@@ -178,12 +178,26 @@ namespace AreteTester.Actions
 
                     if (AreteTester.Actions.Globals.RunnerStatus == RunnerStatusType.Stopped) break;
 
+                    bool isContinue = false;
+
                     foreach (ActionBase action in this.Actions)
                     {
                         if (AreteTester.Actions.Globals.RunnerStatus == RunnerStatusType.Stopped) break;
 
                         if (action.Enabled && IfConditionEvaler.Eval(action.If))
                         {
+                            if (action is Break)
+                            {
+                                break;
+                            }
+
+                            if (action is Continue)
+                            {
+                                isContinue = true;
+                            }
+
+                            if (isContinue) continue;
+
                             if (action is Repeater)
                             {
                                 ((Repeater)action).Process();
