@@ -87,8 +87,54 @@ namespace AreteTester.Actions
 
             switch (this.RepeaterType)
             {
-                case RepeaterType.HTML: LoopHtml(); break;
+                case RepeaterType.Normal: LoopNormal(); break;
                 case RepeaterType.List: LoopList(); break;
+                case RepeaterType.HTML: LoopHtml(); break;
+            }
+        }
+
+        private void LoopNormal()
+        {
+            while (IfConditionEvaler.Eval(this.If))
+            {
+                if (AreteTester.Actions.Globals.RunnerStatus == RunnerStatusType.Stopped) break;
+
+                bool isContinue = false;
+
+                foreach (ActionBase action in this.Actions)
+                {
+                    if (AreteTester.Actions.Globals.RunnerStatus == RunnerStatusType.Stopped) break;
+
+                    if (action.Enabled && IfConditionEvaler.Eval(action.If))
+                    {
+                        if (action is Break)
+                        {
+                            break;
+                        }
+
+                        if (action is Continue)
+                        {
+                            isContinue = true;
+                        }
+
+                        if (isContinue) continue;
+
+                        if (action is Repeater)
+                        {
+                            ((Repeater)action).Process();
+                            continue;
+                        }
+
+                        try
+                        {
+                            action.Process();
+                        }
+                        catch
+                        {
+                            throw;
+                        }
+                    }
+                }
             }
         }
 
@@ -116,12 +162,26 @@ namespace AreteTester.Actions
 
                 Variables.Instance.SetValue(this.ListItemVariable, item);
 
+                bool isContinue = false;
+
                 foreach (ActionBase action in this.Actions)
                 {
                     if (AreteTester.Actions.Globals.RunnerStatus == RunnerStatusType.Stopped) break;
 
                     if (action.Enabled && IfConditionEvaler.Eval(action.If))
                     {
+                        if (action is Break)
+                        {
+                            break;
+                        }
+
+                        if (action is Continue)
+                        {
+                            isContinue = true;
+                        }
+
+                        if (isContinue) continue;
+
                         if (action is Repeater)
                         {
                             ((Repeater)action).Process();
@@ -285,72 +345,79 @@ namespace AreteTester.Actions
         {
             ValidationResult result = base.Validate();
 
-            if (this.RepeaterType == RepeaterType.HTML)
+            switch (this.RepeaterType)
             {
-                if (String.IsNullOrEmpty(this.XPath))
-                {
-                    result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "XPath is empty." });
-                }
-
-                if (String.IsNullOrEmpty(this.PageCount))
-                {
-                    result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "Page count is empty." });
-                }
-
-                if (String.IsNullOrEmpty(this.RepeatElementName))
-                {
-                    result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "RepeatElementName property is empty." });
-                }
-            }
-            else if (this.RepeaterType == RepeaterType.List)
-            {
-                if (String.IsNullOrEmpty(this.ListVariable))
-                {
-                    result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "Variable is empty." });
-                }
-
-                if (String.IsNullOrEmpty(this.ListVariable) == false)
-                {
-                    if (this.ListVariable.Length > 30)
+                case RepeaterType.Normal:
+                    if (String.IsNullOrEmpty(this.If))
                     {
-                        result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "Variable name length cannot be more than 30 characters." });
+                        result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "Normal repeater requires If property set." });
+                    }
+                    break;
+                case RepeaterType.HTML:
+                    if (String.IsNullOrEmpty(this.XPath))
+                    {
+                        result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "XPath is empty." });
                     }
 
-                    Regex variableRegex = new Regex("^@[a-zA-Z0-9_]+$", RegexOptions.Compiled);
-                    if (variableRegex.IsMatch(this.ListVariable) == false)
+                    if (String.IsNullOrEmpty(this.PageCount))
                     {
-                        result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "Variable name: " + this.ListVariable + " is not the valid format. Use only alphabets, numbers, underscore (_) and start with @." });
+                        result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "Page count is empty." });
                     }
 
-                    if (this.ListVariable.Contains("@") && this.ListVariable.IndexOf('@') > 0)
+                    if (String.IsNullOrEmpty(this.RepeatElementName))
                     {
-                        result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "Variable name: " + this.ListVariable + " contains character @ in it. Variable name can only start with @." });
+                        result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "RepeatElementName property is empty." });
                     }
-                }
-
-                if (String.IsNullOrEmpty(this.ListItemVariable))
-                {
-                    result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "Variable is empty." });
-                }
-
-                if (String.IsNullOrEmpty(this.ListItemVariable) == false)
-                {
-                    if (this.ListItemVariable.Length > 30)
+                    break;
+                case RepeaterType.List:
+                    if (String.IsNullOrEmpty(this.ListVariable))
                     {
-                        result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "Variable name length cannot be more than 30 characters." });
+                        result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "ListVariable is empty." });
                     }
 
-                    Regex variableRegex = new Regex("^@[a-zA-Z0-9_]+$", RegexOptions.Compiled);
-                    if (variableRegex.IsMatch(this.ListItemVariable) == false)
+                    if (String.IsNullOrEmpty(this.ListVariable) == false)
                     {
-                        result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "Variable name: " + this.ListItemVariable + " is not the valid format. Use only alphabets, numbers, underscore (_) and start with @." });
+                        if (this.ListVariable.Length > 30)
+                        {
+                            result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "ListVariable name length cannot be more than 30 characters." });
+                        }
+
+                        Regex variableRegex = new Regex("^@[a-zA-Z0-9_]+$", RegexOptions.Compiled);
+                        if (variableRegex.IsMatch(this.ListVariable) == false)
+                        {
+                            result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "ListVariable name: " + this.ListVariable + " is not the valid format. Use only alphabets, numbers, underscore (_) and start with @." });
+                        }
+
+                        if (this.ListVariable.Contains("@") && this.ListVariable.IndexOf('@') > 0)
+                        {
+                            result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "ListVariable name: " + this.ListVariable + " contains character @ in it. Variable name can only start with @." });
+                        }
                     }
 
-                    if (this.ListItemVariable.Contains("@") && this.ListItemVariable.IndexOf('@') > 0)
+                    if (String.IsNullOrEmpty(this.ListItemVariable))
                     {
-                        result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "Variable name: " + this.ListItemVariable + " contains character @ in it. Variable name can only start with @." });
+                        result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "ListItemVariable is empty." });
                     }
-                }
+
+                    if (String.IsNullOrEmpty(this.ListItemVariable) == false)
+                    {
+                        if (this.ListItemVariable.Length > 30)
+                        {
+                            result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "ListItemVariable name length cannot be more than 30 characters." });
+                        }
+
+                        Regex variableRegex = new Regex("^@[a-zA-Z0-9_]+$", RegexOptions.Compiled);
+                        if (variableRegex.IsMatch(this.ListItemVariable) == false)
+                        {
+                            result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "ListItemVariable name: " + this.ListItemVariable + " is not the valid format. Use only alphabets, numbers, underscore (_) and start with @." });
+                        }
+
+                        if (this.ListItemVariable.Contains("@") && this.ListItemVariable.IndexOf('@') > 0)
+                        {
+                            result.Messages.Add(new ValidationMessage() { MessageType = ValidationMessageType.Error, Message = "ListItemVariable name: " + this.ListItemVariable + " contains character @ in it. Variable name can only start with @." });
+                        }
+                    }
+                    break;
             }
 
             return result;

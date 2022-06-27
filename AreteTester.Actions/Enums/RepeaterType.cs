@@ -7,6 +7,7 @@ namespace AreteTester.Actions
 {
     public enum RepeaterType
     {
+        Normal,
         HTML,
         List
     }
