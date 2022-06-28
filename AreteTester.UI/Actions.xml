@@ -42,6 +42,12 @@
   <ActionCategory name="Extensions">
     <Action name="Execute External Method" type="AreteTester.Actions.ExecuteExternalMethod" description="" help_url=""/>
   </ActionCategory>
+  <ActionCategory name="API">
+    <Action name="Get" type="AreteTester.Actions.Get" description="" help_url=""/>
+    <Action name="Post" type="AreteTester.Actions.Post" description="" help_url=""/>
+    <Action name="Put" type="AreteTester.Actions.Put" description="" help_url=""/>
+    <Action name="Delete" type="AreteTester.Actions.Delete" description="" help_url=""/>
+  </ActionCategory>
   <ActionCategory name="TextFile">
     <Action name="Text Exists in File" type="AreteTester.Actions.TextExistsInFile" description="" help_url=""/>
     <Action name="Append Text in File" type="AreteTester.Actions.FileAppendText" description="" help_url=""/>

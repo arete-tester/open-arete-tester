@@ -163,6 +163,12 @@ namespace AreteTester.Actions
     [XmlInclude(typeof(Continue))]
     [XmlInclude(typeof(Break))]
 
+    // API
+    [XmlInclude(typeof(Get))]
+    [XmlInclude(typeof(Post))]
+    [XmlInclude(typeof(Put))]
+    [XmlInclude(typeof(Delete))]
+
     // iFrame
     [XmlInclude(typeof(SwichToFrame))]
     [XmlInclude(typeof(SwichToDefaultContent))]

@@ -57,6 +57,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\Put.cs" />
+    <Compile Include="API\Delete.cs" />
+    <Compile Include="API\Post.cs" />
+    <Compile Include="API\Get.cs" />
     <Compile Include="Control\Break.cs" />
     <Compile Include="Control\Continue.cs" />
     <Compile Include="Enums\DiscoverXPathType.cs" />

@@ -22,6 +22,14 @@ namespace AreteTester.Actions
         public override void Process()
         {
             base.Process();
+
+            NotifyOutput(new Output()
+            {
+                ActionType = this.ActionType,
+                Description = this.Description,
+                IsAssertion = false,
+                DoNotLog = false
+            });
         }
 
         public override ValidationResult Validate()
