@@ -12,6 +12,12 @@ Following are salient features of AreteTester.
 * Access database and validate whether content presented in browser matches with database content.
 * You also can write custom code for your automation test project.
 
+**Download**
+
+https://www.aretetester.com/download/AreteTester.msi
+
+(Latest updates are directly downloaded from aretetester.com. No further installation required)
+
 **Help Documentation**
 
 Visit https://aretetester.com/help/index.html for help documentation.
