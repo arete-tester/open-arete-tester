@@ -6,6 +6,7 @@
     <Action name="Run Variables Expression" type="AreteTester.Actions.RunVariablesExpression" description="" help_url=""/>
     <Action name="Run Comparison Expression" type="AreteTester.Actions.RunComparisonExpression" description="" help_url=""/>
     <Action name="Convert Variable" type="AreteTester.Actions.ConvertVariable" description="" help_url=""/>
+    <Action name="Get Json Value" type="AreteTester.Actions.GetJsonValue" description="" help_url=""/>
   </ActionCategory>
   <ActionCategory name="Text">
     <Action name="Get Text Length In Text" type="AreteTester.Actions.GetTextLength" description="" help_url=""/>

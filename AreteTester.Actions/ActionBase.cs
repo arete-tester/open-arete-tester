@@ -133,6 +133,7 @@ namespace AreteTester.Actions
     [XmlInclude(typeof(ConvertVariable))]
     [XmlInclude(typeof(RunVariablesExpression))]
     [XmlInclude(typeof(RunComparisonExpression))]
+    [XmlInclude(typeof(GetJsonValue))]
 
     // Navigate
     [XmlInclude(typeof(NavigateUrl))]
