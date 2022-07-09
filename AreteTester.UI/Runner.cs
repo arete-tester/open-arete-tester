@@ -19,11 +19,6 @@ namespace AreteTester.UI
         private Dictionary<ActionBase, TreeNode> actionNodeMapping = new Dictionary<ActionBase, TreeNode>();
         private Dictionary<string, TreeNode> nameFunctionNodeMapping = new Dictionary<string, TreeNode>();
         private TreeNode currentNode;
-        private string htmlReportPath = string.Empty;
-        private string xmlResultPath = string.Empty;
-        private int sucessCount = 0, failCount = 0;
-
-        private Report report;        
         
         private static bool actionFound = false;
         private static List<string> outputs = new List<string>();
@@ -46,13 +41,13 @@ namespace AreteTester.UI
 
         private Runner()
         {
-            AreteTester.Actions.Globals.RunnerStatus = RunnerStatusType.Stopped;
+            AreteTester.Core.Runner.Instance.RunThreadStarted += new EventHandler<RunThreadStartedEventArgs>(RunThread_Started);
+            AreteTester.Core.Runner.Instance.RunThreadCompleted += new EventHandler(Instance_RunThreadCompleted);
 
             ActionBase.ProcessStarted += new EventHandler(ActionBase_ProcessStarted);
             ActionBase.ProcessPaused += new EventHandler(ActionBase_ProcessPaused);
             ActionBase.NotificationReceived += new EventHandler<NotificationEventArgs>(ActionBase_NotificationReceived);
             ActionBase.ExceptionReceived += new EventHandler<ActionExceptionEventArgs>(ActionBase_ExceptionReceived);
-            ActionBase.ExecuteFunctionCalled += new EventHandler<ExecuteFunctionEventArgs>(ActionBase_ExecuteFunctionCalled);
         }
 
         public static Runner Instance
@@ -67,10 +62,6 @@ namespace AreteTester.UI
 
         public void Run(Project project, object selectedAction, bool wait, bool start)
         {
-            if (start) AreteTester.Actions.Globals.PausedAction = null;
-
-            AreteTester.Actions.Globals.RunnerDateTime = DateTime.Now;
-            sucessCount = failCount = 0;
             outputs.Clear();
             ActionExceptions = new Dictionary<TreeNode, List<Exception>>();
 
@@ -87,23 +78,15 @@ namespace AreteTester.UI
                 this.OutputTextBox.Text = this.OutputText;
             }
 
-            report = new Report();
-            report.ProjectName = project.Name;
-
             actionNodeMapping.Clear();
             LoadActionNodeMapping(this.ActionsTree.Nodes[0]);
             LoadNameFunctionNodeMapping(this.ActionsTree.Nodes[0]);
 
-            Thread runThread = new Thread(new ParameterizedThreadStart(RunThread));
-            runThread.IsBackground = true;
-            runThread.Start(new List<object>() { project, selectedAction });
+            if (ValidateActions() == false) return;
+
+            AreteTester.Core.Runner.Instance.Run(project, selectedAction, wait, start);
 
             if (StartVariablesThread != null) StartVariablesThread(this, null);
-
-            if (wait)
-            {
-                runThread.Join();
-            }
         }
 
         public void Abort()
@@ -180,33 +163,29 @@ namespace AreteTester.UI
             return fullname;
         }
 
-        private void RunThread(object objects)
+        private bool ValidateActions()
+        {
+            ActionValidator.Instance.ActionTree = ActionsTree;
+            ActionValidator.Instance.RunnerValidation();
+
+            if (ActionValidator.Instance.ValidationResults.Count > 0)
+            {
+                if (ActionValidator.Instance.IsErrorFound())
+                {
+                    MessageBox.Show("Issues found with test action(s).", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AreteTester.Actions.Globals.RunnerStatus = RunnerStatusType.Stopped;
+                    return false;
+                }
+            }
+
+            return ActionValidator.Instance.IsErrorFound() == false;
+        }
+
+        private void RunThread_Started(object sender, RunThreadStartedEventArgs args)
         {
             try
             {
-                Project project = (Project)((List<object>)objects)[0];
-                object classOrFunctionOrAction = ((List<object>)objects)[1];
-
-                ActionValidator.Instance.ActionTree = ActionsTree;
-                ActionValidator.Instance.RunnerValidation();
-
-                if (ActionValidator.Instance.ValidationResults.Count > 0)
-                {
-                    if (ActionValidator.Instance.IsErrorFound())
-                    {
-                        MessageBox.Show("Issues found with test action(s).", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        AreteTester.Actions.Globals.RunnerStatus = RunnerStatusType.Stopped;
-                        return;
-                    }
-                }
-
-                if (Directory.Exists(project.OutputPath) == false)
-                {
-                    Directory.CreateDirectory(project.OutputPath);
-                }
-
-                this.htmlReportPath = project.OutputPath + @"\" + project.Name + " " + AreteTester.Actions.Globals.RunnerDateTime.ToString("yyyy-MMM-dd HH-mm-ss", CultureInfo.InvariantCulture) + ".html";
-                this.xmlResultPath = project.OutputPath + @"\" + project.Name + "_result_" + AreteTester.Actions.Globals.RunnerDateTime.ToString("yyyy_MMM_dd_HH_mm_ss", CultureInfo.InvariantCulture) + ".xml";
+                object classOrFunctionOrAction = args.ClassOrFunctionOrAction;
 
                 try
                 {
@@ -220,7 +199,6 @@ namespace AreteTester.UI
 
                     if (AreteTester.Actions.Globals.RunnerStatus != RunnerStatusType.Paused)
                     {
-                        report.ExecutionStart = DateTime.Now;
                         if (classOrFunctionOrAction == null)
                         {
                             AppendOutputText("Starting project execution..." + Environment.NewLine);
@@ -228,35 +206,8 @@ namespace AreteTester.UI
                     }
 
                     AreteTester.Actions.Globals.RunnerStatus = RunnerStatusType.Running;
-                    SetToolbarButtonStatus();
-
-                    if (classOrFunctionOrAction == null)
-                    {
-                        project.Process();
-                    }
-                    else
-                    {
-                        ((ActionBase)classOrFunctionOrAction).Process();
-                    }
-
-                    if (AreteTester.Actions.Globals.RunnerStatus != RunnerStatusType.Paused)
-                    {
-                        AreteTester.Actions.Globals.RunnerStatus = RunnerStatusType.Stopped;
-                        report.ExecutionEnd = DateTime.Now;
-                        if (classOrFunctionOrAction == null)
-                        {
-                            AppendOutputText("Ending project execution..." + Environment.NewLine);
-                        }
-                        
-                        if (EndVariablesThread != null) EndVariablesThread(this, null);
-                    }
-
-                    if (currentNode != null && currentNode.Tag != null && currentNode.Tag is ActionBase && AreteTester.Actions.Globals.RunnerStatus != RunnerStatusType.Paused)
-                    {
-                        ResetCurrentNodeImageIndex();
-                    }
-
-                    SetToolbarButtonStatus();
+                    
+                    SetToolbarButtonStatus();                   
                 }
                 catch (Exception exc)
                 {
@@ -265,17 +216,24 @@ namespace AreteTester.UI
                     File.WriteAllText(exceptionLog, (exc.Message + Environment.NewLine + exc.StackTrace + Environment.NewLine));
                 }
 
-                report.SuccessCount = sucessCount;
-                report.FailureCount = failCount;
-                report.WriteHtmlReport(htmlReportPath);
-                report.WriteXmlResult(xmlResultPath);
-
                 if (currentNode != null && currentNode.ForeColor == System.Drawing.Color.Blue) currentNode.ForeColor = System.Drawing.Color.Black;
             }
             catch
             {
                 // TODO:
             }
+        }
+
+        private void Instance_RunThreadCompleted(object sender, EventArgs e)
+        {
+            if (EndVariablesThread != null) EndVariablesThread(this, null);
+
+            if (currentNode != null && currentNode.Tag != null && currentNode.Tag is ActionBase && AreteTester.Actions.Globals.RunnerStatus != RunnerStatusType.Paused)
+            {
+                ResetCurrentNodeImageIndex();
+            }
+
+            SetToolbarButtonStatus();
         }
 
         private void ActionBase_ExceptionReceived(object sender, ActionExceptionEventArgs e)
@@ -294,8 +252,8 @@ namespace AreteTester.UI
                 ActionExceptions[node].Add(e.Exception);
             }
 
-            string formattedMessage = FormatExceptionMessage(e.Action, "ERROR : " + e.Exception.Message);
-            report.Logs.Add(new LogReportItem() { Description = formattedMessage });
+            string formattedMessage = AreteTester.Core.Runner.Instance.FormatExceptionMessage(e.Action, "ERROR : " + e.Exception.Message);
+            //report.Logs.Add(new LogReportItem() { Description = formattedMessage });
 
             AppendOutputText(formattedMessage.Replace("<br/>", Environment.NewLine) + Environment.NewLine);
         }
@@ -344,60 +302,12 @@ namespace AreteTester.UI
             SetToolbarButtonStatus();
         }
 
-        private void ActionBase_ExecuteFunctionCalled(object sender, ExecuteFunctionEventArgs e)
-        {
-            if (nameFunctionNodeMapping.ContainsKey(e.FunctionFullName))
-            {
-                TreeNode functionNode = nameFunctionNodeMapping[e.FunctionFullName];
-                if (functionNode.Tag != null && functionNode.Tag is TestFunction)
-                {
-                    TestFunction function = (TestFunction)functionNode.Tag;
-                    if (function.Enabled && IfConditionEvaler.Eval(function.If))
-                    {
-                        function.Process();
-                    }
-                }
-            }
-        }
-
         private void ActionBase_NotificationReceived(object sender, NotificationEventArgs e)
         {
-            if(outputs.Contains(e.Output.Id)) return;
-
-            outputs.Add(e.Output.Id);
-
             if (e.Output.DoNotLog == false)
             {
-                string formattedMessage = FormatLogMessage(e.Output);
-                report.Logs.Add(new LogReportItem() { Description = formattedMessage });
-
+                string formattedMessage = AreteTester.Core.Runner.Instance.FormatLogMessage(e.Output);
                 AppendOutputText(formattedMessage.Replace("<br/>", Environment.NewLine) + Environment.NewLine);
-            }
-
-            if (e.Output.IsAssertion && e.Output.Success) sucessCount++;
-            if (e.Output.IsAssertion && e.Output.Success == false) failCount++;
-
-            if (e.Output.IsAssertion)
-            {
-                AssertionReportItem assertionItem = new AssertionReportItem();
-                if (String.IsNullOrEmpty(e.Output.Description) == false)
-                {
-                    assertionItem.Description = e.Output.Description;
-                }
-                else
-                {
-                    if(Preferences.Instance.IgnoreEmptyDescription == false)
-                    {
-                        assertionItem.Description = "[empty description] ";
-                    }
-                }
-                assertionItem.Name = e.Output.Name;
-                assertionItem.AssertionType = e.Output.ActionType;
-                assertionItem.Expected = e.Output.Expected;
-                assertionItem.Actual = e.Output.Actual;
-                assertionItem.Success = e.Output.Success ? "1" : "0";
-
-                report.Assertions.Add(assertionItem);
             }
 
             if (e.Output.IsAssertion && sender is ActionBase)
@@ -409,54 +319,6 @@ namespace AreteTester.UI
                     node.ForeColor = (e.Output.Success) ? System.Drawing.Color.Green : System.Drawing.Color.Red;
                 }
             }
-        }
-
-        private string FormatLogMessage(Output output)
-        {
-            string formattedMessage = string.Empty;
-
-            formattedMessage += output.ActionType;
-            if (String.IsNullOrEmpty(output.Description) == false)
-            {
-                formattedMessage += " : " + output.Description + ".";
-            }
-            else
-            {
-                if (Preferences.Instance.IgnoreEmptyDescription == false)
-                {
-                    formattedMessage += " : " + "[empty description] ";
-                }
-            }
-
-            if (String.IsNullOrEmpty(output.Expected) == false && String.IsNullOrEmpty(output.Actual) == false)
-            {
-                formattedMessage += "Expected: " + output.Expected + ", Actual: " + output.Actual + ", Success: " + (output.Success ? "YES" : "NO") + ".";
-            }
-            formattedMessage += String.IsNullOrEmpty(output.Message) ? String.Empty : "<br/>" + output.Message;
-
-            return formattedMessage;
-        }
-
-        private string FormatExceptionMessage(ActionBase action, string message)
-        {
-            string formattedMessage = string.Empty;
-
-            formattedMessage += action.ActionType;
-            if (String.IsNullOrEmpty(action.Description) == false)
-            {
-                formattedMessage += " : " + action.Description + ".";
-            }
-            else
-            {
-                if (Preferences.Instance.IgnoreEmptyDescription == false)
-                {
-                    formattedMessage += " : " + "[empty description] ";
-                }
-            }
-
-            formattedMessage += String.IsNullOrEmpty(message) ? String.Empty : "<br/>" + message;
-
-            return formattedMessage;
         }
 
         private void FillActionsWithBreakpointToIgnore(TreeNode node)

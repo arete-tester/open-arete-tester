@@ -85,7 +85,7 @@
             this.mnuResumeFunction = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbortFunction = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuCopyFunctionName = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCopyFullName = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator29 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuSetBreakpoint = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
@@ -582,7 +582,7 @@
             this.mnuResumeFunction,
             this.mnuAbortFunction,
             this.toolStripSeparator13,
-            this.mnuCopyFunctionName,
+            this.mnuCopyFullName,
             this.toolStripSeparator29,
             this.mnuSetBreakpoint,
             this.toolStripSeparator10,
@@ -604,14 +604,14 @@
             this.mnuExpandAll,
             this.mnuCollapse});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(226, 558);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(229, 558);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // mnuModule
             // 
             this.mnuModule.Image = global::AreteTester.UI.Properties.Resources.module;
             this.mnuModule.Name = "mnuModule";
-            this.mnuModule.Size = new System.Drawing.Size(225, 22);
+            this.mnuModule.Size = new System.Drawing.Size(228, 22);
             this.mnuModule.Text = "Add Module";
             this.mnuModule.Click += new System.EventHandler(this.AddModule_Click);
             // 
@@ -619,7 +619,7 @@
             // 
             this.mnuClass.Image = global::AreteTester.UI.Properties.Resources._class;
             this.mnuClass.Name = "mnuClass";
-            this.mnuClass.Size = new System.Drawing.Size(225, 22);
+            this.mnuClass.Size = new System.Drawing.Size(228, 22);
             this.mnuClass.Text = "Add Test Class";
             this.mnuClass.Click += new System.EventHandler(this.AddClass_Click);
             // 
@@ -627,20 +627,20 @@
             // 
             this.mnuTestFunction.Image = global::AreteTester.UI.Properties.Resources.method;
             this.mnuTestFunction.Name = "mnuTestFunction";
-            this.mnuTestFunction.Size = new System.Drawing.Size(225, 22);
+            this.mnuTestFunction.Size = new System.Drawing.Size(228, 22);
             this.mnuTestFunction.Text = "Add Test Function";
             this.mnuTestFunction.Click += new System.EventHandler(this.AddTestFunction_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(222, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(225, 6);
             // 
             // mnuExecuteFunction
             // 
             this.mnuExecuteFunction.Image = global::AreteTester.UI.Properties.Resources.execute;
             this.mnuExecuteFunction.Name = "mnuExecuteFunction";
-            this.mnuExecuteFunction.Size = new System.Drawing.Size(225, 22);
+            this.mnuExecuteFunction.Size = new System.Drawing.Size(228, 22);
             this.mnuExecuteFunction.Text = "Execute";
             this.mnuExecuteFunction.Click += new System.EventHandler(this.mnuExecuteFunction_Click);
             // 
@@ -648,7 +648,7 @@
             // 
             this.mnuPauseFunction.Image = global::AreteTester.UI.Properties.Resources.pause;
             this.mnuPauseFunction.Name = "mnuPauseFunction";
-            this.mnuPauseFunction.Size = new System.Drawing.Size(225, 22);
+            this.mnuPauseFunction.Size = new System.Drawing.Size(228, 22);
             this.mnuPauseFunction.Text = "Pause";
             this.mnuPauseFunction.Click += new System.EventHandler(this.mnuPauseFunction_Click);
             // 
@@ -656,7 +656,7 @@
             // 
             this.mnuResumeFunction.Image = global::AreteTester.UI.Properties.Resources.resume;
             this.mnuResumeFunction.Name = "mnuResumeFunction";
-            this.mnuResumeFunction.Size = new System.Drawing.Size(225, 22);
+            this.mnuResumeFunction.Size = new System.Drawing.Size(228, 22);
             this.mnuResumeFunction.Text = "Resume";
             this.mnuResumeFunction.Click += new System.EventHandler(this.mnuResumeFunction_Click);
             // 
@@ -664,45 +664,45 @@
             // 
             this.mnuAbortFunction.Image = global::AreteTester.UI.Properties.Resources.abort;
             this.mnuAbortFunction.Name = "mnuAbortFunction";
-            this.mnuAbortFunction.Size = new System.Drawing.Size(225, 22);
+            this.mnuAbortFunction.Size = new System.Drawing.Size(228, 22);
             this.mnuAbortFunction.Text = "Abort";
             this.mnuAbortFunction.Click += new System.EventHandler(this.mnuAbortFunction_Click);
             // 
             // toolStripSeparator13
             // 
             this.toolStripSeparator13.Name = "toolStripSeparator13";
-            this.toolStripSeparator13.Size = new System.Drawing.Size(222, 6);
+            this.toolStripSeparator13.Size = new System.Drawing.Size(225, 6);
             // 
-            // mnuCopyFunctionName
+            // mnuCopyFullName
             // 
-            this.mnuCopyFunctionName.Name = "mnuCopyFunctionName";
-            this.mnuCopyFunctionName.Size = new System.Drawing.Size(225, 22);
-            this.mnuCopyFunctionName.Text = "Function Name to Clipboard";
-            this.mnuCopyFunctionName.Click += new System.EventHandler(this.mnuCopyFunctionName_Click);
+            this.mnuCopyFullName.Name = "mnuCopyFullName";
+            this.mnuCopyFullName.Size = new System.Drawing.Size(228, 22);
+            this.mnuCopyFullName.Text = "Copy Full Name to Clipboard";
+            this.mnuCopyFullName.Click += new System.EventHandler(this.mnuCopyFullName_Click);
             // 
             // toolStripSeparator29
             // 
             this.toolStripSeparator29.Name = "toolStripSeparator29";
-            this.toolStripSeparator29.Size = new System.Drawing.Size(222, 6);
+            this.toolStripSeparator29.Size = new System.Drawing.Size(225, 6);
             // 
             // mnuSetBreakpoint
             // 
             this.mnuSetBreakpoint.Image = global::AreteTester.UI.Properties.Resources.breakpoint;
             this.mnuSetBreakpoint.Name = "mnuSetBreakpoint";
-            this.mnuSetBreakpoint.Size = new System.Drawing.Size(225, 22);
+            this.mnuSetBreakpoint.Size = new System.Drawing.Size(228, 22);
             this.mnuSetBreakpoint.Text = "Set Breakpoint";
             this.mnuSetBreakpoint.Click += new System.EventHandler(this.mnuSetBreakpoint_Click);
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(222, 6);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(225, 6);
             // 
             // mnuValidationMessages
             // 
             this.mnuValidationMessages.Image = global::AreteTester.UI.Properties.Resources.validation_messages;
             this.mnuValidationMessages.Name = "mnuValidationMessages";
-            this.mnuValidationMessages.Size = new System.Drawing.Size(225, 22);
+            this.mnuValidationMessages.Size = new System.Drawing.Size(228, 22);
             this.mnuValidationMessages.Text = "Validation Messages";
             this.mnuValidationMessages.Click += new System.EventHandler(this.mnuValidationMessages_Click);
             // 
@@ -710,20 +710,20 @@
             // 
             this.mnuExceptionMessage.Image = global::AreteTester.UI.Properties.Resources.exceptions;
             this.mnuExceptionMessage.Name = "mnuExceptionMessage";
-            this.mnuExceptionMessage.Size = new System.Drawing.Size(225, 22);
+            this.mnuExceptionMessage.Size = new System.Drawing.Size(228, 22);
             this.mnuExceptionMessage.Text = "Exception Message";
             this.mnuExceptionMessage.Click += new System.EventHandler(this.mnuExceptionMessage_Click);
             // 
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(222, 6);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(225, 6);
             // 
             // mnuUp
             // 
             this.mnuUp.Image = global::AreteTester.UI.Properties.Resources.up;
             this.mnuUp.Name = "mnuUp";
-            this.mnuUp.Size = new System.Drawing.Size(225, 22);
+            this.mnuUp.Size = new System.Drawing.Size(228, 22);
             this.mnuUp.Text = "Up";
             this.mnuUp.Click += new System.EventHandler(this.mnuUp_Click);
             // 
@@ -731,20 +731,20 @@
             // 
             this.mnuDown.Image = global::AreteTester.UI.Properties.Resources.down;
             this.mnuDown.Name = "mnuDown";
-            this.mnuDown.Size = new System.Drawing.Size(225, 22);
+            this.mnuDown.Size = new System.Drawing.Size(228, 22);
             this.mnuDown.Text = "Down";
             this.mnuDown.Click += new System.EventHandler(this.mnuDown_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(222, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(225, 6);
             // 
             // mnuCut
             // 
             this.mnuCut.Image = global::AreteTester.UI.Properties.Resources.cut;
             this.mnuCut.Name = "mnuCut";
-            this.mnuCut.Size = new System.Drawing.Size(225, 22);
+            this.mnuCut.Size = new System.Drawing.Size(228, 22);
             this.mnuCut.Text = "Cut";
             this.mnuCut.Click += new System.EventHandler(this.Cut_Click);
             // 
@@ -752,7 +752,7 @@
             // 
             this.mnuCopy.Image = global::AreteTester.UI.Properties.Resources.copy;
             this.mnuCopy.Name = "mnuCopy";
-            this.mnuCopy.Size = new System.Drawing.Size(225, 22);
+            this.mnuCopy.Size = new System.Drawing.Size(228, 22);
             this.mnuCopy.Text = "Copy";
             this.mnuCopy.Click += new System.EventHandler(this.Copy_Click);
             // 
@@ -760,7 +760,7 @@
             // 
             this.mnuPaste.Image = global::AreteTester.UI.Properties.Resources.paste;
             this.mnuPaste.Name = "mnuPaste";
-            this.mnuPaste.Size = new System.Drawing.Size(225, 22);
+            this.mnuPaste.Size = new System.Drawing.Size(228, 22);
             this.mnuPaste.Text = "Paste";
             this.mnuPaste.Click += new System.EventHandler(this.Paste_Click);
             // 
@@ -768,20 +768,20 @@
             // 
             this.mnuDelete.Image = global::AreteTester.UI.Properties.Resources.delete;
             this.mnuDelete.Name = "mnuDelete";
-            this.mnuDelete.Size = new System.Drawing.Size(225, 22);
+            this.mnuDelete.Size = new System.Drawing.Size(228, 22);
             this.mnuDelete.Text = "Delete";
             this.mnuDelete.Click += new System.EventHandler(this.Delete_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(222, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(225, 6);
             // 
             // mnuImport
             // 
             this.mnuImport.Image = global::AreteTester.UI.Properties.Resources.import;
             this.mnuImport.Name = "mnuImport";
-            this.mnuImport.Size = new System.Drawing.Size(225, 22);
+            this.mnuImport.Size = new System.Drawing.Size(228, 22);
             this.mnuImport.Text = "Import";
             this.mnuImport.Click += new System.EventHandler(this.mnuImport_Click);
             // 
@@ -789,33 +789,33 @@
             // 
             this.mnuExport.Image = global::AreteTester.UI.Properties.Resources.export;
             this.mnuExport.Name = "mnuExport";
-            this.mnuExport.Size = new System.Drawing.Size(225, 22);
+            this.mnuExport.Size = new System.Drawing.Size(228, 22);
             this.mnuExport.Text = "Export";
             this.mnuExport.Click += new System.EventHandler(this.mnuExport_Click);
             // 
             // toolStripSeparator21
             // 
             this.toolStripSeparator21.Name = "toolStripSeparator21";
-            this.toolStripSeparator21.Size = new System.Drawing.Size(222, 6);
+            this.toolStripSeparator21.Size = new System.Drawing.Size(225, 6);
             // 
             // mnuExpand
             // 
             this.mnuExpand.Name = "mnuExpand";
-            this.mnuExpand.Size = new System.Drawing.Size(225, 22);
+            this.mnuExpand.Size = new System.Drawing.Size(228, 22);
             this.mnuExpand.Text = "Expand";
             this.mnuExpand.Click += new System.EventHandler(this.mnuExpand_Click);
             // 
             // mnuExpandAll
             // 
             this.mnuExpandAll.Name = "mnuExpandAll";
-            this.mnuExpandAll.Size = new System.Drawing.Size(225, 22);
+            this.mnuExpandAll.Size = new System.Drawing.Size(228, 22);
             this.mnuExpandAll.Text = "Expand All";
             this.mnuExpandAll.Click += new System.EventHandler(this.mnuExpandAll_Click);
             // 
             // mnuCollapse
             // 
             this.mnuCollapse.Name = "mnuCollapse";
-            this.mnuCollapse.Size = new System.Drawing.Size(225, 22);
+            this.mnuCollapse.Size = new System.Drawing.Size(228, 22);
             this.mnuCollapse.Text = "Collapse";
             this.mnuCollapse.Click += new System.EventHandler(this.mnuCollapse_Click);
             // 
@@ -1504,7 +1504,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator28;
         private System.Windows.Forms.ToolStripMenuItem mnuApplyResults;
         private System.Windows.Forms.ToolStripMenuItem mnuClearResults;
-        private System.Windows.Forms.ToolStripMenuItem mnuCopyFunctionName;
+        private System.Windows.Forms.ToolStripMenuItem mnuCopyFullName;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator29;
     }
 }

@@ -20,7 +20,7 @@ namespace AreteTester.UI
 
         private void TermsForm_Load(object sender, EventArgs e)
         {
-            string licenseFile = Globals.LocalBinDir + @"\" + "LICENSE";
+            string licenseFile = AreteTester.Core.Globals.LocalBinDir + @"\" + "LICENSE";
 
             txtTerms.Text = File.ReadAllText(licenseFile);
             txtTerms.SelectionStart = 0;

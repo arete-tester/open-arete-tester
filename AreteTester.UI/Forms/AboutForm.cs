@@ -20,13 +20,13 @@ namespace AreteTester.UI
             InitializeComponent();
 
             lblApplicationVersion.Text = ConfigurationManager.AppSettings["version"];
-            lblSupportEmail.Text = "support@" + Globals.WebDomain;
-            lnkUrl.Text = Globals.WebUrl;
+            lblSupportEmail.Text = "support@" + AreteTester.Core.Globals.WebDomain;
+            lnkUrl.Text = AreteTester.Core.Globals.WebUrl;
         }
 
         private void AboutForm_Load(object sender, EventArgs e)
         {
-            string currentVersionsFile = Globals.LocalBinDir + @"CurrentVersions.xml";
+            string currentVersionsFile = AreteTester.Core.Globals.LocalBinDir + @"CurrentVersions.xml";
             if (File.Exists(currentVersionsFile))
             {
                 XDocument xdoc = XDocument.Load(currentVersionsFile);
@@ -37,7 +37,7 @@ namespace AreteTester.UI
 
         private void lnkUrl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(Globals.WebUrl);
+            Process.Start(AreteTester.Core.Globals.WebUrl);
         }
     }
 }

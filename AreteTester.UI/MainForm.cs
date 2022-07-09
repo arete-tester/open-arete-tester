@@ -19,19 +19,20 @@ using System.Xml.Linq;
 using System.Net;
 using Microsoft.Win32;
 using System.Xml;
+using AreteTester.Core;
 
 namespace AreteTester.UI
 {
     public partial class MainForm : Form
     {
-        private string profilePath = Globals.LocalDir + @"\Profile.xml";
+        private string profilePath = AreteTester.Core.Globals.LocalDir + @"\Profile.xml";
 
-        private string videosPath = Globals.WebUrl + "/Videos.xml";
-        private string videosLocalPath = Globals.LocalDir + @"\Videos.xml";
+        private string videosPath = AreteTester.Core.Globals.WebUrl + "/Videos.xml";
+        private string videosLocalPath = AreteTester.Core.Globals.LocalDir + @"\Videos.xml";
 
-        private string chromeDriversLocalPath = Globals.LocalDir + @"\ChromeDrivers\";
+        private string chromeDriversLocalPath = AreteTester.Core.Globals.LocalDir + @"\ChromeDrivers\";
 
-        private string preferencesFile = Globals.LocalDir + "Preferences.xml";
+        private string preferencesFile = AreteTester.Core.Globals.LocalDir + "Preferences.xml";
         private Profile profile = new Profile();
         private TreeNode selectedActionNode;
         private Project project;
@@ -85,7 +86,7 @@ namespace AreteTester.UI
         {
             try
             {
-                string exceptionLog = Globals.LocalDir + @"\exception.log";
+                string exceptionLog = AreteTester.Core.Globals.LocalDir + @"\exception.log";
                 Exception exc = (Exception)e.ExceptionObject;
                 File.AppendAllText(exceptionLog, (exc.Message + Environment.NewLine + exc.StackTrace + Environment.NewLine));
 
@@ -242,7 +243,7 @@ namespace AreteTester.UI
             else
             {
                 XmlDocument doc = new XmlDocument();
-                doc.Load(Globals.LocalBinDir + "Actions.xml");
+                doc.Load(AreteTester.Core.Globals.LocalBinDir + "Actions.xml");
 
                 foreach (XmlNode categoryNode in doc.DocumentElement.ChildNodes)
                 {
@@ -784,7 +785,7 @@ namespace AreteTester.UI
                     Runner.Instance.Abort();
                 }
 
-                this.project = ProjectActionTreeLoader.LoadProject(this.projectPath);
+                this.project = ProjectLoader.LoadProject(this.projectPath);
 
                 tvActions.Nodes.Clear();
 
@@ -1175,70 +1176,35 @@ namespace AreteTester.UI
 
         private void StartChromeDriver()
         {
-            bool startDriver = false;
+            string chromeDriverExePath = string.Empty;
 
-            try
+            string chromeVersion = ChromeDriversDownloader.GetChromeVersion();
+            if (String.IsNullOrEmpty(chromeVersion) == false)
             {
-                if (AreteTester.Actions.Globals.Driver == null || AreteTester.Actions.Globals.Driver.WindowHandles.Count <= 0)
-                {
-                    startDriver = true;
-                }
-            }
-            catch
-            {
-                startDriver = true;
+                chromeDriverExePath = chromeDriversLocalPath + chromeVersion;
             }
 
-            if (startDriver)
+            if (Directory.Exists(chromeDriverExePath) == false)
             {
-                try
+                MessageBox.Show("Chrome driver not found. Restart the application to download Chrome driver automatically. Contact vendor if problem persists", "Chrome not found!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            List<string> extensionPaths = new List<string>();
+            if (Preferences.Instance.LaunchXPathFinder)
+            {
+                string pathToExtension = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Google\Chrome\User Data\Default\Extensions\ihnknokegkbpmofmafnkoadfjkhlogph\";
+                if (Directory.Exists(pathToExtension))
                 {
-                    string chromeDriverExePath = string.Empty;
-
-
-                    string chromeVersion = Globals.GetChromeVersion();
-                    if (String.IsNullOrEmpty(chromeVersion) == false)
+                    string[] extensionDirs = Directory.GetDirectories(pathToExtension);
+                    if (extensionDirs.Length > 0)
                     {
-                        chromeDriverExePath = chromeDriversLocalPath + chromeVersion;
+                        extensionPaths.Add(extensionDirs[0]);
                     }
-
-                    if (Directory.Exists(chromeDriverExePath) == false)
-                    {
-                        MessageBox.Show("Chrome driver not found. Restart the application to download Chrome driver automatically. Contact vendor if problem persists", "Chrome not found!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    ChromeDriverService chromeDriverService = ChromeDriverService.CreateDefaultService(chromeDriverExePath);
-                    chromeDriverService.HideCommandPromptWindow = true;
-                    ChromeOptions options = new ChromeOptions();
-                    options.AddArguments("no-sandbox");
-
-                    if (String.IsNullOrEmpty(this.project.UserDataDir) == false)
-                    {
-                        options.AddArguments("user-data-dir=" + this.project.UserDataDir.Replace(@"\", "/"));
-                    }
-
-                    if (Preferences.Instance.LaunchXPathFinder)
-                    {
-                        string pathToExtension = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Google\Chrome\User Data\Default\Extensions\ihnknokegkbpmofmafnkoadfjkhlogph\";
-                        if (Directory.Exists(pathToExtension))
-                        {
-                            string[] extensionDirs = Directory.GetDirectories(pathToExtension);
-                            if (extensionDirs.Length > 0)
-                            {
-                                options.AddArguments("load-extension=" + extensionDirs[0]);
-                            }
-                        }
-                    }
-
-                    AreteTester.Actions.Globals.Driver = new ChromeDriver(chromeDriverService, options);
-                    AreteTester.Actions.Globals.Driver.Manage().Timeouts().ImplicitWait = new TimeSpan(0, 0, 0);
-                }
-                catch
-                {
-                    // TODO: not a good idea to hide exceptions here
                 }
             }
+
+            DriverLoader.StartChromeDriver(chromeDriverExePath, extensionPaths, this.project.UserDataDir);
         }
 
         private void AddModule_Click(object sender, EventArgs e)
@@ -1747,7 +1713,7 @@ namespace AreteTester.UI
         {
             mnuModule.Enabled = mnuClass.Enabled = mnuTestFunction.Enabled  = false;
             mnuImport.Enabled = mnuExport.Enabled = false;
-            mnuCopyFunctionName.Enabled = false;
+            mnuCopyFullName.Enabled = false;
             tbtnAddModule.Enabled = tbtnAddTestClass.Enabled = tbtnAddTestFunction.Enabled = false;
             tbtnExecute.Enabled = false;
             tbtnImport.Enabled = tbtnExport.Enabled = false;
@@ -1772,6 +1738,7 @@ namespace AreteTester.UI
                 mnuUp.Enabled = mnuDown.Enabled = false;
                 mnuSetBreakpoint.Enabled = false;
                 mnuImport.Enabled = mnuExport.Enabled = true;
+                mnuCopyFullName.Enabled = true;
 
                 tbtnAddModule.Enabled = tbtnAddTestClass.Enabled = true;
                 tbtnAddTestFunction.Enabled = tbtnExecute.Enabled = false;
@@ -1784,6 +1751,7 @@ namespace AreteTester.UI
                 mnuUp.Enabled = mnuDown.Enabled = false;
                 mnuSetBreakpoint.Enabled = false;
                 mnuImport.Enabled = mnuExport.Enabled = true;
+                mnuCopyFullName.Enabled = true;
 
                 tbtnAddTestFunction.Enabled = true;
                 tbtnExecute.Enabled = true;
@@ -1796,7 +1764,7 @@ namespace AreteTester.UI
                 mnuUp.Enabled = mnuDown.Enabled = false;
                 mnuSetBreakpoint.Enabled = false;
                 mnuExport.Enabled = true;
-                mnuCopyFunctionName.Enabled = true;
+                mnuCopyFullName.Enabled = true;
 
                 tbtnAddModule.Enabled = tbtnAddTestClass.Enabled = tbtnAddTestFunction.Enabled = false;
                 tbtnExecute.Enabled = true;
@@ -1945,32 +1913,40 @@ namespace AreteTester.UI
             mnuViewOutputWindow.Text = (splitContainerMain.Panel2Collapsed) ? "View Output Window" : "Hide Output Window";
         }
 
-        private void mnuCopyFunctionName_Click(object sender, EventArgs e)
+        private void mnuCopyFullName_Click(object sender, EventArgs e)
         {
             if (selectedActionNode == null) return;
 
-            if (selectedActionNode.Tag is TestFunction)
+            ActionBase action = (ActionBase)selectedActionNode.Tag;
+            List<string> names = new List<string>();
+
+            if (action is Module) names.Add(((Module)action).Name);
+            else if (action is TestClass) names.Add(((TestClass)action).Name);
+            else if (action is TestFunction) names.Add(((TestFunction)action).Name);
+
+            TreeNode parentNode = selectedActionNode.Parent;
+            while ((parentNode.Tag is Project) == false)
             {
-                TestFunction function = (TestFunction)selectedActionNode.Tag;
-                string fullName = function.Name;
-
-                TreeNode parentNode = selectedActionNode.Parent;
-                while ((parentNode.Tag is Project) == false)
+                if (parentNode.Tag is TestClass)
                 {
-                    if (parentNode.Tag is TestClass)
-                    {
-                        fullName = ((TestClass)parentNode.Tag).Name + "." + fullName; 
-                    }
-                    else if (parentNode.Tag is Module)
-                    {
-                        fullName = ((Module)parentNode.Tag).Name + "." + fullName; 
-                    }
-
-                    parentNode = parentNode.Parent;
+                    names.Add(((TestClass)parentNode.Tag).Name);
+                }
+                else if (parentNode.Tag is Module)
+                {
+                    names.Add(((Module)parentNode.Tag).Name);
+                }
+                else if (parentNode.Tag is TestFunction)
+                {
+                    names.Add(((TestFunction)parentNode.Tag).Name);
                 }
 
-                Clipboard.SetText(fullName);
+                parentNode = parentNode.Parent;
             }
+
+            names.Reverse();
+            string fullName = String.Join(".", names.ToArray());
+
+            Clipboard.SetText(fullName);
         }
 
         private void mnuSetBreakpoint_Click(object sender, EventArgs e)
@@ -2211,7 +2187,7 @@ namespace AreteTester.UI
 
                 if (String.IsNullOrEmpty(url) == false)
                 {
-                    Process.Start(Globals.WebUrl + url);
+                    Process.Start(AreteTester.Core.Globals.WebUrl + url);
                 }
             }
         }

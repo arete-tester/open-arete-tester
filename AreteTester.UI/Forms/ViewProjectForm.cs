@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AreteTester.Actions;
+using AreteTester.Core;
 
 namespace AreteTester.UI
 {
@@ -26,7 +27,7 @@ namespace AreteTester.UI
             {
                 lblProjectPath.Text = dlg.SelectedPath;
 
-                this.project = ProjectActionTreeLoader.LoadProject(dlg.SelectedPath);
+                this.project = ProjectLoader.LoadProject(dlg.SelectedPath);
 
                 LoadProjectTree();
             }

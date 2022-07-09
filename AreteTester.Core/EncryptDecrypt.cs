@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Security.Cryptography;
 using System.IO;
-using System.Windows.Forms;
 
-namespace AreteTester.UI
+namespace AreteTester.Core
 {
     public class EncryptDecrypt
     {

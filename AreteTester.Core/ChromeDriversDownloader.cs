@@ -7,10 +7,11 @@ using System.IO;
 using System.Net;
 using System.Xml.Linq;
 using System.Configuration;
+using Microsoft.Win32;
 
-namespace AreteTester.UI
+namespace AreteTester.Core
 {
-    internal class ChromeDriversDownloader
+    public class ChromeDriversDownloader
     {
         private string chromeDriversConfigPath = ConfigurationManager.AppSettings["web_url"] + "/Chromedrivers.xml";
         private string chromeDriversConfigLocalPath = Globals.LocalDir + @"ChromeDrivers\Chromedrivers.xml";
@@ -24,14 +25,26 @@ namespace AreteTester.UI
 
         public void Download()
         {
+            Download(false);
+        }
+
+        public void Download(bool isShell)
+        {
             try
             {
+                if (isShell)
+                {
+                    string localDir = Path.GetDirectoryName(System.Reflection.Assembly.GetAssembly(typeof(Globals)).Location) + @"\";
+                    chromeDriversConfigLocalPath = chromeDriversConfigLocalPath.Replace(Globals.LocalDir, localDir);
+                    chromeDriversLocalPath = chromeDriversLocalPath.Replace(AreteTester.Core.Globals.LocalDir, localDir);
+                }
+
                 if (Directory.Exists(chromeDriversLocalPath) == false)
                 {
                     Directory.CreateDirectory(chromeDriversLocalPath);
                 }
 
-                string chromeVersion = Globals.GetChromeVersion();
+                string chromeVersion = GetChromeVersion();
 
                 if (String.IsNullOrEmpty(chromeVersion)) return;
 
@@ -66,6 +79,21 @@ namespace AreteTester.UI
             {
                 // TODO: 
             }
+        }
+
+        public static string GetChromeVersion()
+        {
+            object regVersion = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Google\Chrome\BLBeacon", "version", null);
+            if (regVersion != null)
+            {
+                string version = (string)regVersion;
+                if (version.Contains("."))
+                {
+                    return version.Split('.')[0];
+                }
+            }
+
+            return string.Empty;
         }
     }
 }

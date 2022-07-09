@@ -1,7 +1,10 @@
 AreteTester.Actions/bin/**
 AreteTester.Actions/obj/**
+AreteTester.Core/bin/**
+AreteTester.Core/obj/**
 AreteTester.UI/bin/**
 AreteTester.UI/obj/**
 AreteTester/bin/**
 AreteTester/obj/**
+AreteTester.Shell/**
 Build

@@ -363,4 +363,11 @@ namespace AreteTester.Actions
     {
         public string FunctionFullName { get; set; }
     }
+
+    public class RunThreadStartedEventArgs : EventArgs
+    {
+        public Project Project { get; set; }
+
+        public object ClassOrFunctionOrAction { get; set; }
+    }
 }

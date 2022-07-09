@@ -8,12 +8,13 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using AreteTester.Actions;
+using AreteTester.Core;
 
 namespace AreteTester.UI
 {
     public partial class PreferencesForm : Form
     {
-        private string preferencesFile = Globals.LocalDir + "Preferences.xml";
+        private string preferencesFile = AreteTester.Core.Globals.LocalDir + "Preferences.xml";
 
         public PreferencesForm()
         {

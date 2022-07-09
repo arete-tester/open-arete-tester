@@ -6,7 +6,7 @@ using System.Text;
 using System.Xml.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace AreteTester.UI
+namespace AreteTester.Core
 {
     public class LoadSave
     {

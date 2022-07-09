@@ -6,7 +6,7 @@ using System.Reflection;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace AreteTester.UI
+namespace AreteTester.Core
 {
     internal class Report
     {
